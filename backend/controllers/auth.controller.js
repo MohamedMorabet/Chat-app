@@ -1,8 +1,21 @@
+import User from "../models/user.modul.js";
+
 export const signup = async (req, res) => {
     try {
-        const { fullNamr, username, password, confirmPassword, gender } = req.body;
-    } catch (error) {
+        const { fullName, username, password, confirmPassword, gender } = req.body;
+
+        if (password !== confirmPassword) {
+            return res.status(400).json({ message: "Passwords do not match" });
+        }
+
+        const user = await User.findOne({ username });
+        if (user) {
+            return res.status(400).json({ message: "Username already exists" });
+        }
         
+        //Hash password
+    } catch (error) {
+
     }
 }
 
