@@ -14,6 +14,6 @@ app.use("/api/auth", authRoutes);
 
 
 app.listen(PORT, () => {
-    connectToMongoDB();
+    connectToMongoDB();  // if not woring, change to the iphone wifi
     console.log(`Server running on port ${PORT}`);
 });
